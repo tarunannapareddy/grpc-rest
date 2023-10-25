@@ -18,7 +18,7 @@ class Lab6GrpcServicer(grpc_pb2_grpc.Lab6GrpcServicer):
         try:
             ioBuffer = io.BytesIO(request.img)
             img = Image.open(ioBuffer)
-            return lab6_grpc_pb2.imageReply(width=img.size[0], height=img.size[1])
+            return grpc_pb2.imageReply(width=img.size[0], height=img.size[1])
         except:
             traceback.print_exc()
             return grpc_pb2.imageReply(width=0, height=0)
@@ -38,7 +38,7 @@ class Lab6GrpcServicer(grpc_pb2_grpc.Lab6GrpcServicer):
         try:
             ioBuffer = io.BytesIO(base64.b64decode(request.img))
             img = Image.open(ioBuffer)
-            return lab6_grpc_pb2.imageReply(width=img.size[0], height=img.size[1])
+            return grpc_pb2.imageReply(width=img.size[0], height=img.size[1])
         except:
             traceback.print_exc()
             return grpc_pb2.imageReply(width=0, height=0)
